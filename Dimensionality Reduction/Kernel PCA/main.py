@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.decomposition import KernelPCA 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
 from matplotlib.colors import ListedColormap
@@ -23,8 +23,8 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Applying PCA
-pca = PCA(n_components = 2)
+# Applying Kernel PCA
+pca = KernelPCA(n_components = 2, kernel='rbf')
 X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 

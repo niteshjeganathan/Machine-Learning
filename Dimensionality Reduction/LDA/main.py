@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
 from matplotlib.colors import ListedColormap
@@ -23,10 +23,10 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Applying PCA
-pca = PCA(n_components = 2)
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
+# Applying LDA
+lda = LDA(n_components=2)
+X_train = lda.fit_transform(X_train, y_train)
+X_test = lda.transform(X_test)
 
 # Training the Logistic Regression model on the Training set
 classifier = LogisticRegression(random_state = 0)
